@@ -1,23 +1,16 @@
-import { useState } from 'react';
 
 
-function Button({getWord, text, number}){
-const [words, setwords] = useState([]);
+function Button({ text, number, setWordNumber}){
 
-    async function fetchWord(number) {
-        const source = "https://random-word-api.herokuapp.com/word?number="+ number;
-        const response = await fetch(source);
-        const data = await response.json();
-        console.log(data)
-        setwords(data)
+    function handleClick(){
+        setWordNumber(number)
+        console.log(`wordNumber set to ${number}`)
     }
+
     return <button
         onClick = {
-            function(){
-                fetchWord(number)
-                console.log(`${number} button clicked`)
+            handleClick
             }
-        }
         style = {{
             border: 'none',
             margin: '5%',
@@ -29,7 +22,7 @@ const [words, setwords] = useState([]);
             backgroundColor : '#DED6D6'
         }}
     >
-    {text}{words}</button>
+    {text}</button>
 }
 
 export default Button

@@ -9,29 +9,21 @@ function App() {
   //set default state of word and input box
   const [word, setWord] = useState("");
   const [userInput, setUserInput] = useState("");
-  //const [listOfWords, setListOfWords] = useState([]);
   const [wordCounter, setWordCounter] = useState(0);
 
   // (REFACTOR FOR MULTIPLE WORDS)
-  async function fetchData() {
-    const source = "https://random-word-api.herokuapp.com/word";
-    const response = await fetch(source);
+  async function getWord() {
+    const response = await fetch(`https://random-word-api.herokuapp.com/word`);
     const data = await response.json();
     console.log(data);
-    //'data' returns as an array of 1, so setting the word
-    //here as data[0] saves confusion down the line
+    //'data' returns as an array, so setting the word
     setWord(data[0]);
   }
 
   //useEffect hook stops error messages regarding promises being returned
   useEffect(() => {
-    fetchData();
-  }, []);
-
-  //gets one random word
-  function getWord() {
-    fetchData();
-  }
+    getWord();
+  },[]);
 
   //function that is called onKeyDown in Input component
   function handleKey(e) {
@@ -76,51 +68,18 @@ function App() {
   }
 
   return (
-    <main
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        backgroundColor: "#EDDFEF",
-        height: "100vh",
-        width: "100vw",
-        justifyContent: "center",
-        alignItems: "center",
-        
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          backgroundColor: "#696D7D",
-          minHeight: "40%",
-          minWidth: "45%",
-          borderRadius: "1%",
-          paddingLeft: "3%",
-          paddingRight: "2%"
-        }}
-      >
-        <div
-          style={{
-            paddingTop: "3%",
-            
-          }}
-        >
+    <main className= "Main">
+      <div className= "Container">
+        <div className= "Word-Container">
           <Header word={word} />
         </div>
         <Input handleChange={handleChange} handleKey={handleKey} />
         <h3>{wordCounter}</h3>
-        <form
-          style={{
-            display: "flex",
-            marginTop: "5%",
-            justifyContent: "space-evenly",
-          }}
-        >
-          <Button getWord={getWord} text={"Get 1 Word"} number={1} />
-          <Button getWord={getWord} text={"Get 5 Words"} number={5} />
-          <Button getWord={getWord} text={"Get 10 Words"} number={10} />
-        </form>
+        <span className= "Button-Container">
+          <Button text={"Get 1 Word"} number={1} />
+          <Button text={"Get 5 Words"} number={5} />
+          <Button text={"Get 10 Words"} number={10} />
+        </span>
       </div>
     </main>
   );
