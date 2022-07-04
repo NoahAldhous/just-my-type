@@ -1,0 +1,14 @@
+.Header {
+    color: #D2D5DD;
+    font-family: sans-serif;
+    font-size: 40px;
+    transition: 0.5s
+      }
+
+.Header--incorrect {
+    color:red
+}
+
+.Header--correct {
+    color:green
+}

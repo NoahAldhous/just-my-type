@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 
-import Input from "../Input/index.js";
-import Button from "../Button/index.js";
-import Header from "../Header/index.js";
+import Input from "../Input/Input.js";
+import Button from "../Button/Button.js";
+import Header from "../Header/Header.js";
 
 function App() {
   //set default state of word and input box
@@ -43,6 +43,7 @@ function App() {
 
   //function that is called whenever input field value changes (i.e as user types)
   function handleChange(e) {
+    var header = document.querySelector(".Header")
     //as user types, the UserInput state is updated to what they've typed
     setUserInput(e.target.value);
     //and that state is checked against the current random word state
@@ -55,32 +56,33 @@ function App() {
       setWordCounter(wordCounter + 1);
       //and reset the input state
       setUserInput("");
+      header.classList.remove("Header--correct")
     }
     //If user types a string that is not included in the word, turns the word red
     //to tell user they have made a mistake
     if (word.includes(userInput) === false) {
-      document.querySelector(".Word").setAttribute("style", "color: red");
+      header.classList.add("Header--incorrect");
     }
     //if user corrects this mistake, turns the word black to show they are back on track.
     if (word.includes(userInput)) {
-      document.querySelector(".Word").setAttribute("style", "color: black");
+      header.classList.remove("Header--incorrect")
     }
   }
 
   return (
     <main className= "Main">
-      <div className= "Container">
-        <div className= "Word-Container">
-          <Header word={word} />
+      <container className= "Container-Container">
+        <div className= "Container">
+          <div className= "Word-Container">
+            <Header word={word} />
+          </div>
+          <Input handleChange={handleChange} handleKey={handleKey} />
+          <h3>{wordCounter}</h3>
+          <span className= "Button-Container">
+            <Button text={"Get a New Word"} getWord= {getWord} />
+          </span>
         </div>
-        <Input handleChange={handleChange} handleKey={handleKey} />
-        <h3>{wordCounter}</h3>
-        <span className= "Button-Container">
-          <Button text={"Get 1 Word"} number={1} />
-          <Button text={"Get 5 Words"} number={5} />
-          <Button text={"Get 10 Words"} number={10} />
-        </span>
-      </div>
+      </container>
     </main>
   );
 }
