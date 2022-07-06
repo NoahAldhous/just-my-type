@@ -71,18 +71,18 @@ function App() {
 
   return (
     <main className= "Main">
-      <container className= "Container-Container">
-        <div className= "Container">
-          <div className= "Word-Container">
-            <Header word={word} />
+        <div className= "Container-Container">
+          <div className= "Container">
+            <div className= "Word-Container">
+              <Header word={word} />
+            </div>
+            <Input handleChange={handleChange} handleKey={handleKey} />
+            <h3>{wordCounter}</h3>
+            <span className= "Button-Container">
+              <Button text={"Get a New Word"} getWord= {getWord} />
+            </span>
           </div>
-          <Input handleChange={handleChange} handleKey={handleKey} />
-          <h3>{wordCounter}</h3>
-          <span className= "Button-Container">
-            <Button text={"Get a New Word"} getWord= {getWord} />
-          </span>
         </div>
-      </container>
     </main>
   );
 }
