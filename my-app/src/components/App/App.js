@@ -45,7 +45,7 @@ function App() {
   function handleChange(e) {
     var header = document.querySelector(".Header")
     //as user types, the UserInput state is updated to what they've typed
-    setUserInput(e.target.value);
+    setUserInput(e.target.value.toLowerCase());
     //and that state is checked against the current random word state
     if (userInput === word) {
       //if they match, get a new random word-
