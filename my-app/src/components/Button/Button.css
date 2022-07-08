@@ -1,7 +1,7 @@
 .Button  {
     border: none;
     margin: 5%;
-    width: 30%;
+    min-width: 30%;
     font-family: sans-serif;
     font-size: 20px;
     padding: 1%;
