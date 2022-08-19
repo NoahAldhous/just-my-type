@@ -17,3 +17,21 @@
 .invisible{
     display: none;
 }
+
+@media only screen and (max-width: 600px) {
+    .time-up-text{
+        font-family: inherit;
+        color: #d7ceb2;
+        font-size: 5vw;
+        margin:0;
+        font-weight: bold;
+    }
+    
+    .the-countdown-text{
+        font-family: inherit;
+        font-size: 5vw;
+        color: #d7ceb2;
+        margin: 0;
+        font-weight: bold;
+    }
+}
