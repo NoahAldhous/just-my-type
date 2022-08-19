@@ -1,8 +1,11 @@
 import "./Button.css";
 
-function Button({ text, getWord}) {
+function Button({ text, getWord, setScore}) {
+
     function handleClick(){
+        setScore(0)
         getWord()
+        
     }
 
   return (

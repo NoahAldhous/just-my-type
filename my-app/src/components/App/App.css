@@ -1,49 +1,68 @@
+body {
+  font-family:'BodoniModa';
+  background-color: #669098;
+}
+
 .Main {
   display: flex;
   flex-direction: column;
-  background-color: hotpink;
-  background-image: linear-gradient(135deg, purple 25%, transparent 25%),
-  linear-gradient(225deg, rgb(185, 0, 185) 25%, transparent 25%),
-  linear-gradient(315deg, purple 25%, transparent 25%),
-  linear-gradient(45deg, rgb(185, 0, 185) 25%, transparent 25%);
-  background-position: -30px 0, -30px 0, 0 0, 0 0;
-  background-size: 60px 60px;
-  background-repeat: repeat;
+  background-color: #669098;
   height: 100vh;
   width: 100vw;
   justify-content: center;
   align-items: center;
 }
 
+.Timer{
+  position: absolute;
+  z-index: 0;
+  width: 40vw;
+  height: 60vh;
+  background-color: green;
+  animation-duration: 60s;
+  animation-name: Timer;
+  border-radius: 1%;
+}
+
 .Container {
+  z-index: 1;
   display: flex;
   flex-direction: column;
-  background-color: #816E94;
-  min-height: 99%;
-  min-width: 99%;
-  padding-left: 3%;
+  background-color: #112a37;
+  height: 60vh;
+  width: 40vw;
   border-radius: 1%;
+  border: 3px solid #d7ceb2;
 }
 
-.Container-Container {
-  display:flex;
-  justify-content: center;
-  min-height: 40%;
-  min-width: 45%;
-  border: 2px solid #816E94;
-  padding-left: 1%;
-  padding-right: 1%;
-  padding-top: 0.5%;
-  padding-bottom: 0.5%;
-  border-radius: 1%;
-}
 
 .Word-Container {
-  padding-top: 3%;
+  padding-top: 1%;
+  padding-left: 5%;
 }
 
 .Button-Container {
   display: flex;
   margin-top: 5%;
   justify-content: space-evenly;
+}
+
+.Score-Container{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.Score{
+  color: #d7ceb2;
+}
+
+.Highscore{
+  color: #d7ceb2;
+}
+
+@keyframes Timer{
+  0% {width: 100vw;
+      height: 150vh}
+  100% {width: 40vw;
+    height: 60vh}
 }

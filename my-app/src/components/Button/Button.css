@@ -2,19 +2,22 @@
     border: none;
     margin: 5%;
     min-width: 30%;
-    font-family: sans-serif;
+    font-family: inherit;
+    font-weight: bold;
     font-size: 20px;
     padding: 1%;
-    border: 1px solid #330036;
-    background-color: #816E94;
-    color:#330036;
+    border: 1px solid #a59e8c;
+    background-color: #d7ceb2;
+    color:#232c33;
     opacity: 75%;
     transition: 0.2s;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
 .Button:hover {
     opacity: 100%;
-    background-color: #330036;
-    color:#F5B700;
+    background-color: #545045;
+    color:#d7ceb2;
     opacity: 80%;
 }
