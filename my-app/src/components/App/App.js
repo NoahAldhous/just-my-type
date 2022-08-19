@@ -8,7 +8,6 @@ import Header from "../Header/Header.js";
 function App() {
   //set default state of word, input box, score and high score
   const [word, setWord] = useState("");
-  const [userInput, setUserInput] = useState("");
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0)
 
@@ -67,8 +66,6 @@ function App() {
       e.target.value = "";
       //increase wordCounter by one
       setScore(score + 1);
-      //and reset the input state
-      setUserInput("");
       header.classList.remove("Header--correct")
     }
   }
@@ -86,7 +83,7 @@ function App() {
               <h3 className = "Highscore">high score: {highScore}</h3>
             </section>
             <span className= "Button-Container">
-              <Button text={"reset"} getWord= {getWord} setScore = {setScore} />
+              <Button text={"reset"} getWord= {getWord} score = {score} setScore = {setScore} highScore={highScore} setHighScore = {setHighScore} />
             </span>
           </div>
     </main>

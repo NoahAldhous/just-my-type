@@ -1,6 +1,6 @@
 import "./Button.css";
 
-function Button({ text, getWord, setScore}) {
+function Button({ text, getWord, score, setScore, highScore, setHighScore}) {
 
     function handleClick(){
         setScore(0)
