@@ -11,17 +11,12 @@ function App() {
   const [word, setWord] = useState("just my type");
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(localStorage.localScore)
-  localStorage.setItem('localScore', highScore)
   const [seconds, setSeconds] =  useState(59);
   const [buttonText, setButtonText] = useState("click to begin")
   
+  localStorage.setItem('localScore', highScore)
+
   
-    if(localStorage.localScore === undefined){
-      localStorage.setItem('localScore', 0)
-    }
-
-
-
   //fetch request for random word API
   async function getWord() {
     const response = await fetch(`https://random-word-api.herokuapp.com/word`);
@@ -75,6 +70,11 @@ function App() {
             </section>
             <section className = "Score-Container">
               <h3 className = "Score">score: {score}</h3>
+              {
+                localStorage.localScore === 'undefined'
+                ? <p>yes</p>
+                : <p>no</p>
+              }
               <h3 className = "Highscore">high score: {localStorage.getItem('localScore')}</h3>
             </section>
           </div>
