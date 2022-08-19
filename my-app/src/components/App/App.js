@@ -16,8 +16,8 @@ function App() {
   const [buttonText, setButtonText] = useState("click to begin")
   
   
-    if(highScore === undefined){
-      setHighScore(0)
+    if(localStorage.localScore === undefined){
+      localStorage.setItem('localScore', 0)
     }
 
 
