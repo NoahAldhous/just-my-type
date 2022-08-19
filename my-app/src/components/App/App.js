@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 
 import Input from "../Input/Input.js";
@@ -14,21 +14,20 @@ function App() {
   const [seconds, setSeconds] =  useState(59);
   const [buttonText, setButtonText] = useState("click to begin")
   
-  localStorage.setItem('localScore', highScore)
-
-  
+  useEffect( ()=>{
+    localStorage.setItem('localScore', highScore)
+    console.log(localStorage.localScore)
+  }, [highScore])
   //fetch request for random word API
   async function getWord() {
     const response = await fetch(`https://random-word-api.herokuapp.com/word`);
     const data = await response.json();
-    console.log(data);
     //'data' returns as an array, so setting the word as the 0 index 
     setWord(data[0]);
   }
 
   //function that is called whenever input field value changes (i.e as user types)
   function handleChange(e) {
-    console.log(e.target.value.toLowerCase())
 
     var header = document.querySelector(".Header")
     
@@ -58,16 +57,21 @@ function App() {
   return (
     <main className= "Main">
           <div className= "Container">
+
             <div className= "Word-Container">
               <Header word={word} />
             </div>
+
             <Input handleChange={handleChange}  />
+
             <section className= "Button-Container">
               <Button buttonText={buttonText} setButtonText = {setButtonText} getWord= {getWord} score = {score} setScore = {setScore} highScore={highScore} setHighScore = {setHighScore} setSeconds = {setSeconds}/>
             </section>
+
             <section className = "Timer-Container">
               <Timer seconds = {seconds} setSeconds = {setSeconds} score ={score} highScore = {highScore} setHighScore = {setHighScore} />
             </section>
+
             <section className = "Score-Container">
               <h3 className = "Score">score: {score}</h3>
               {
@@ -76,6 +80,7 @@ function App() {
                 : <h3 className = "Highscore">high score: {localStorage.getItem('localScore')}</h3>
               }
             </section>
+
           </div>
     </main>
   );

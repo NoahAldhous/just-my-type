@@ -17,9 +17,9 @@ body {
   z-index: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   background-color: #112a37;
-  height: 60vh;
+  height: 65vh;
   width: 50vw;
   border-radius: 1%;
   border: 3px solid #d7ceb2;
@@ -43,17 +43,19 @@ body {
 .Score-Container{
   display: flex;
   justify-content: space-evenly;
-  margin-bottom: 8%;
+  padding-bottom: 2%;
 }
 
 .Score{
   color: #d7ceb2;
   margin: 0;
+  font-size: 2vw;
 }
 
 .Highscore{
   color: #d7ceb2;
   margin: 0;
+  font-size: 2vw;
 }
 
 .Timer-Container{
