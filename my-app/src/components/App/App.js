@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./App.css";
 
 import Input from "../Input/Input.js";
@@ -15,14 +15,11 @@ function App() {
   const [seconds, setSeconds] =  useState(59);
   const [buttonText, setButtonText] = useState("click to begin")
   
-  useEffect(() => {
-    if(localStorage.localScore){
-      setHighScore(localStorage.localScore)
-    }
-    else{
+  
+    if(highScore === undefined){
       setHighScore(0)
     }
-  }, []);
+
 
 
   //fetch request for random word API
