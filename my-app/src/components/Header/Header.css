@@ -1,9 +1,11 @@
 .Header {
     color: #d7ceb2;
-    font-size: 4vw;
+    font-size: 10vh;
     letter-spacing: 1px;
-    transition: 0.5s
-      }
+    transition: 0.5s;
+    margin-top: 5%;
+    margin-bottom: 1%;
+}
 
 .Header--incorrect {
     color:red

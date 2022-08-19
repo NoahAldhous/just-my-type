@@ -13,21 +13,11 @@ body {
   align-items: center;
 }
 
-.Timer{
-  position: absolute;
-  z-index: 0;
-  width: 40vw;
-  height: 60vh;
-  background-color: green;
-  animation-duration: 60s;
-  animation-name: Timer;
-  border-radius: 1%;
-}
-
 .Container {
   z-index: 1;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   background-color: #112a37;
   height: 60vh;
   width: 40vw;
@@ -39,30 +29,29 @@ body {
 .Word-Container {
   padding-top: 1%;
   padding-left: 5%;
+  display: flex;
+  flex-direction: column;
+
 }
 
 .Button-Container {
   display: flex;
-  margin-top: 5%;
+  margin-top: 1%;
   justify-content: space-evenly;
 }
 
 .Score-Container{
   display: flex;
   justify-content: space-evenly;
+  margin-top: 4%;
 }
 
 .Score{
   color: #d7ceb2;
+  margin: 0;
 }
 
 .Highscore{
   color: #d7ceb2;
-}
-
-@keyframes Timer{
-  0% {width: 100vw;
-      height: 150vh}
-  100% {width: 40vw;
-    height: 60vh}
+  margin: 0;
 }
