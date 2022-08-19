@@ -1,6 +1,6 @@
 import "./Button.css";
 
-function Button({ text, getWord, score, setScore, highScore, setHighScore, setSeconds}) {
+function Button({ buttonText, setButtonText, getWord, score, setScore, highScore, setHighScore, setSeconds, setPaused}) {
 
   var input = document.querySelector(".Input-field")
 
@@ -9,16 +9,17 @@ function Button({ text, getWord, score, setScore, highScore, setHighScore, setSe
         setHighScore(score)
         localStorage.setItem('localScore', highScore)
       }
+        input.placeholder = "type the word above..."
         input.disabled = false
+        setButtonText("reset")
         setSeconds(59)
         setScore(0)
         getWord()
-        
     }
 
   return (
     <button className="Button" onClick={handleClick}>
-      {text}
+      {buttonText}
     </button>
   );
 }

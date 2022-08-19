@@ -22,6 +22,7 @@ const Timer = (props) => {
                 header.classList.remove("Header--incorrect")
                 input.disabled = true;
                 input.value = '';
+                input.placeholder = "..."
 
             } 
         }, 1000)
@@ -30,17 +31,20 @@ const Timer = (props) => {
           };
     });
 
-
     return (
         <div className='the-countdown-component'>
         { seconds === 0
-            ? <div className='time-up-text'>try again?</div>
+            ? <div className='time-up-text'>1:00</div>
             : <div className='countdown-prog-container'>
             <p className='the-countdown-text' > 0:{seconds < 10 ?  `0${seconds}` : seconds}</p>
             </div>
         }
         </div>
     )
+
+
+
+    
 }
 
 export default Timer;

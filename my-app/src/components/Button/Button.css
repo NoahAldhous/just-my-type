@@ -8,7 +8,7 @@
     padding: 1%;
     border: 1px solid #a59e8c;
     background-color: #d7ceb2;
-    color:#232c33;
+    color:#112a37;
     opacity: 75%;
     transition: 0.2s;
     cursor: pointer;
@@ -17,7 +17,7 @@
 
 .Button:hover {
     opacity: 100%;
-    background-color: #545045;
-    color:#d7ceb2;
+    background-color: #669098;
+    color:#192325;
     opacity: 80%;
 }

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./App.css";
 
 import Input from "../Input/Input.js";
@@ -7,12 +7,13 @@ import Header from "../Header/Header.js";
 import Timer from "../CountdownTimer/CountdownTimer";
 
 function App() {
-  //set default state of word, input box, score and high score
-  const [word, setWord] = useState("");
+  //set default states
+  const [word, setWord] = useState("just my type");
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(localStorage.localScore)
-  const [seconds, setSeconds ] =  useState(59);
   localStorage.setItem('localScore', highScore)
+  const [seconds, setSeconds] =  useState(59);
+  const [buttonText, setButtonText] = useState("click to begin")
   
   //fetch request for random word API
   async function getWord() {
@@ -23,17 +24,12 @@ function App() {
     setWord(data[0]);
   }
 
-  //useEffect hook stops error messages regarding promises being returned
-  useEffect(() => {
-    getWord();
-  },[]);
-
   //function that is called whenever input field value changes (i.e as user types)
   function handleChange(e) {
     console.log(e.target.value.toLowerCase())
 
     var header = document.querySelector(".Header")
-
+    
     //If user types a string that is not included in the word, turns the word red
     //to tell user they have made a mistake
     if (word.includes(e.target.value.toLowerCase()) === false) {
@@ -64,14 +60,14 @@ function App() {
               <Header word={word} />
             </div>
             <Input handleChange={handleChange}  />
+            <span className= "Button-Container">
+              <Button buttonText={buttonText} setButtonText = {setButtonText} getWord= {getWord} score = {score} setScore = {setScore} highScore={highScore} setHighScore = {setHighScore} setSeconds = {setSeconds}/>
+            </span>
             <section className = "Score-Container">
               <h3 className = "Score">score: {score}</h3>
               <h3 className = "Highscore">high score: {localStorage.getItem('localScore')}</h3>
               <Timer seconds = {seconds} setSeconds = {setSeconds} score ={score} highScore = {highScore} setHighScore = {setHighScore} />
             </section>
-            <span className= "Button-Container">
-              <Button text={"reset"} getWord= {getWord} score = {score} setScore = {setScore} highScore={highScore} setHighScore = {setHighScore} setSeconds = {setSeconds}/>
-            </span>
           </div>
     </main>
   );

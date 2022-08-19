@@ -7,7 +7,8 @@ function Input({ handleChange, handleKey }) {
       type="text"
       onChange={handleChange}
       onKeyDown={handleKey}
-      placeholder="type away..."
+      placeholder="..."
+      disabled
     />
   );
 }
