@@ -3,7 +3,7 @@ import "./Button.css";
 function Button({ buttonText, setButtonText, getWord, score, setScore, highScore, setHighScore, setSeconds, setPaused}) {
 
   var input = document.querySelector(".Input-field")
-
+  var timer = document.querySelector(".the-countdown-component")
     function handleClick(){
       if(score > highScore){
         setHighScore(score)
@@ -15,6 +15,7 @@ function Button({ buttonText, setButtonText, getWord, score, setScore, highScore
         setSeconds(59)
         setScore(0)
         getWord()
+        timer.classList.remove('invisible')
     }
 
   return (

@@ -37,12 +37,13 @@ body {
 .Button-Container {
   display: flex;
   justify-content: space-evenly;
+  margin-top: 2%;
 }
 
 .Score-Container{
   display: flex;
   justify-content: space-evenly;
-  margin-bottom: 6%;
+  margin-bottom: 8%;
 }
 
 .Score{
@@ -53,4 +54,12 @@ body {
 .Highscore{
   color: #d7ceb2;
   margin: 0;
+}
+
+.Timer-Container{
+  display: flex;
+  justify-content: center;
+  min-height: 6%;
+  margin: 0;
+  margin-bottom: 2%;
 }

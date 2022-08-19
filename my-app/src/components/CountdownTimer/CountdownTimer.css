@@ -13,3 +13,7 @@
     margin: 0;
     font-weight: bold;
 }
+
+.invisible{
+    display: none;
+}

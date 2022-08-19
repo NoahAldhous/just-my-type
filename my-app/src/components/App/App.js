@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 
 import Input from "../Input/Input.js";
@@ -15,6 +15,16 @@ function App() {
   const [seconds, setSeconds] =  useState(59);
   const [buttonText, setButtonText] = useState("click to begin")
   
+  useEffect(() => {
+    if(localStorage.localScore){
+      setHighScore(localStorage.localScore)
+    }
+    else{
+      setHighScore(0)
+    }
+  }, []);
+
+
   //fetch request for random word API
   async function getWord() {
     const response = await fetch(`https://random-word-api.herokuapp.com/word`);
@@ -60,13 +70,15 @@ function App() {
               <Header word={word} />
             </div>
             <Input handleChange={handleChange}  />
-            <span className= "Button-Container">
+            <section className= "Button-Container">
               <Button buttonText={buttonText} setButtonText = {setButtonText} getWord= {getWord} score = {score} setScore = {setScore} highScore={highScore} setHighScore = {setHighScore} setSeconds = {setSeconds}/>
-            </span>
+            </section>
+            <section className = "Timer-Container">
+              <Timer seconds = {seconds} setSeconds = {setSeconds} score ={score} highScore = {highScore} setHighScore = {setHighScore} />
+            </section>
             <section className = "Score-Container">
               <h3 className = "Score">score: {score}</h3>
               <h3 className = "Highscore">high score: {localStorage.getItem('localScore')}</h3>
-              <Timer seconds = {seconds} setSeconds = {setSeconds} score ={score} highScore = {highScore} setHighScore = {setHighScore} />
             </section>
           </div>
     </main>

@@ -32,7 +32,7 @@ const Timer = (props) => {
     });
 
     return (
-        <div className='the-countdown-component'>
+        <div className={['the-countdown-component' , 'invisible'].join(' ')}>
         { seconds === 0
             ? <div className='time-up-text'>1:00</div>
             : <div className='countdown-prog-container'>
