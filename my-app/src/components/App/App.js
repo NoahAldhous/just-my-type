@@ -16,7 +16,12 @@ function App() {
   
   useEffect( ()=>{
     localStorage.setItem('localScore', highScore)
-    console.log(localStorage.localScore)
+    if(localStorage.localScore === 'undefined'){
+      setHighScore(0)
+      console.log('highscore set to 0')
+    }
+    console.log(`local storage is ${localStorage.localScore}`)
+    console.log(`high score is ${highScore}`)
   }, [highScore])
   //fetch request for random word API
   async function getWord() {

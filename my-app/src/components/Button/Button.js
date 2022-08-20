@@ -7,7 +7,7 @@ function Button({ buttonText, setButtonText, getWord, score, setScore, highScore
     function handleClick(){
       if(score > highScore){
         setHighScore(score)
-        localStorage.setItem('localScore', highScore)
+        
       }
         input.placeholder = "type the word above..."
         input.disabled = false
