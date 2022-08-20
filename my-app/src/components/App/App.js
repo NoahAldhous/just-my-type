@@ -82,7 +82,7 @@ function App() {
               {
                 localStorage.localScore === 'undefined'
                 ? <h3 className = "Highscore">high score: 0</h3>
-                : <h3 className = "Highscore">high score: {localStorage.getItem('localScore')}</h3>
+                : <h3 className = "Highscore">high score: {highScore}</h3>
               }
             </section>
 

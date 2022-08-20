@@ -17,6 +17,7 @@ const Timer = (props) => {
                 clearInterval(myInterval)
                 if(score > highScore){
                         setHighScore(score)
+                        console.log(`new highscore!`)
                         localStorage.setItem('localScore', highScore)
                     }
                 header.classList.remove("Header--incorrect")
