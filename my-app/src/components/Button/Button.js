@@ -11,12 +11,12 @@ function Button({ buttonText, setButtonText, getWord, score, setScore, highScore
         
       }
         input.placeholder = "type the word above..."
-        input.disabled = false
-        input.focus()
         setButtonText("reset")
         setSeconds(59)
         setScore(0)
         getWord()
+        input.focus()
+        input.value = ''
         timer.classList.remove('invisible')
     }
 

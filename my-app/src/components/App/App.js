@@ -13,16 +13,15 @@ function App() {
   const [highScore, setHighScore] = useState(localStorage.localScore)
   const [seconds, setSeconds] =  useState(59);
   const [buttonText, setButtonText] = useState("click to begin")
+  const [initialRender, setInitialRender] = useState(true)
   
   useEffect( ()=>{
     localStorage.setItem('localScore', highScore)
     if(localStorage.localScore === 'undefined'){
       setHighScore(0)
-      console.log('highscore set to 0')
     }
-    console.log(`local storage is ${localStorage.localScore}`)
-    console.log(`high score is ${highScore}`)
   }, [highScore])
+
   //fetch request for random word API
   async function getWord() {
     const response = await fetch(`https://random-word-api.herokuapp.com/word`);
@@ -35,7 +34,16 @@ function App() {
   function handleChange(e) {
 
     var header = document.querySelector(".Header")
-    
+    var timer = document.querySelector(".the-countdown-component")
+
+    if(initialRender){
+      setButtonText("reset");
+      setSeconds(59);
+      timer.classList.remove('invisible');
+      setInitialRender(false)
+    }
+
+
     //If user types a string that is not included in the word, turns the word red
     //to tell user they have made a mistake
     if (word.includes(e.target.value.toLowerCase()) === false) {
@@ -67,14 +75,14 @@ function App() {
               <Header word={word} />
             </div>
 
-            <Input handleChange={handleChange}  />
+            <Input handleChange={handleChange} setSeconds = {setSeconds}  getWord= {getWord} initialRender = {initialRender} score = {score} setScore = {setScore} highScore={highScore} setHighScore = {setHighScore}/>
 
             <section className= "Button-Container">
               <Button buttonText={buttonText} setButtonText = {setButtonText} getWord= {getWord} score = {score} setScore = {setScore} highScore={highScore} setHighScore = {setHighScore} setSeconds = {setSeconds}/>
             </section>
 
             <section className = "Timer-Container">
-              <Timer seconds = {seconds} setSeconds = {setSeconds} score ={score} highScore = {highScore} setHighScore = {setHighScore} />
+              <Timer seconds = {seconds} setSeconds = {setSeconds} score ={score} highScore = {highScore} setHighScore = {setHighScore} setInitialRender = {setInitialRender} />
             </section>
 
             <section className = "Score-Container">

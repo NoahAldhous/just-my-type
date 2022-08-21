@@ -5,7 +5,7 @@ import './CountdownTimer.css';
 const Timer = (props) => {
     var input = document.querySelector(".Input-field")
     var header = document.querySelector(".Header")
-    const {seconds, setSeconds, score, highScore, setHighScore} = props;
+    const {seconds, setSeconds, score, highScore, setHighScore, setInitialRender} = props;
 
 
     useEffect(()=>{
@@ -21,10 +21,10 @@ const Timer = (props) => {
                         localStorage.setItem('localScore', highScore)
                     }
                 header.classList.remove("Header--incorrect")
-                input.disabled = true;
+                input.blur()
                 input.value = '';
                 input.placeholder = "..."
-
+                setInitialRender(true)
             } 
         }, 1000)
         return ()=> {
@@ -35,7 +35,7 @@ const Timer = (props) => {
     return (
         <div className={['the-countdown-component' , 'invisible'].join(' ')}>
         { seconds === 0
-            ? <div className='time-up-text'>1:00</div>
+            ? <div className='time-up-text'>0:00</div>
             : <div className='countdown-prog-container'>
             <p className='the-countdown-text' > 0:{seconds < 10 ?  `0${seconds}` : seconds}</p>
             </div>
