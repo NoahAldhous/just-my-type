@@ -4,6 +4,7 @@ function Button({ buttonText, setButtonText, getWord, score, setScore, highScore
 
   var input = document.querySelector(".Input-field")
   var timer = document.querySelector(".the-countdown-component")
+
     function handleClick(){
       if(score > highScore){
         setHighScore(score)
@@ -11,6 +12,7 @@ function Button({ buttonText, setButtonText, getWord, score, setScore, highScore
       }
         input.placeholder = "type the word above..."
         input.disabled = false
+        input.focus()
         setButtonText("reset")
         setSeconds(59)
         setScore(0)
