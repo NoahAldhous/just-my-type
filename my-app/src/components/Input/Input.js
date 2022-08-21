@@ -11,7 +11,7 @@ function Input({ handleChange, setSeconds, getWord, initialRender, score, setSco
     setScore(0);
     getWord();
     input.placeholder = "type the word above...";
-    setSeconds('0')
+    setSeconds(-1)
   }
   console.log(initialRender)
   }
