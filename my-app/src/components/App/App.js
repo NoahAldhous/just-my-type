@@ -49,14 +49,14 @@ function App() {
   //function that is called whenever input field value changes (i.e as user types)
   function handleChange(e) {
 
-    var currentWord = document.querySelector(".RandomWord")
-    var timer = document.querySelector(".the-countdown-component")
+    var currentWord = document.querySelector(".Random-word");
+    var timer = document.querySelector(".the-countdown-component");
 
     if(initialRender){
       setButtonText("reset");
       setSeconds(59);
       timer.classList.remove('invisible');
-      setInitialRender(false)
+      setInitialRender(false);
     }
 
     //If what is typed in the input field does not match the random word, turns the random word red to indicate a typo.
@@ -66,7 +66,7 @@ function App() {
     
     //if user corrects this typo, turns the word black to indicate correct spelling.
     if (word.includes(e.target.value.toLowerCase())) {
-      currentWord.classList.remove("Random-word--incorrect")
+      currentWord.classList.remove("Random-word--incorrect");
     }
     
     //checks if input field matches the word
@@ -75,9 +75,9 @@ function App() {
       getWord();
       //reset the text in the input field
       e.target.value = "";
-      //increase wordCounter by one
+      //increment user's score by one
       setScore(score + 1);
-      currentWord.classList.remove("Random-word--incorrect")
+      currentWord.classList.remove("Random-word--incorrect");
     }
   }
 

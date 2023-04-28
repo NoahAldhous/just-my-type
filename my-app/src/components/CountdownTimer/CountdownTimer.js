@@ -4,7 +4,7 @@ import './CountdownTimer.css';
 
 const Timer = (props) => {
     var input = document.querySelector(".Input-field")
-    var header = document.querySelector(".Header")
+    var currentWord = document.querySelector(".Random-word")
     const {seconds, setSeconds, score, highScore, setHighScore, setInitialRender} = props;
 
 
@@ -20,7 +20,7 @@ const Timer = (props) => {
                         console.log(`new highscore!`)
                         localStorage.setItem('localScore', highScore)
                     }
-                header.classList.remove("Header--incorrect")
+                currentWord.classList.remove("Random-word--incorrect")
                 input.blur()
                 input.value = '';
                 input.placeholder = "..."
