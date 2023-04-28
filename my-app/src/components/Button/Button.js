@@ -4,11 +4,11 @@ function Button({ buttonText, setButtonText, getWord, score, setScore, highScore
 
   var input = document.querySelector(".Input-field")
   var timer = document.querySelector(".the-countdown-component")
+  var currentWord = document.querySelector(".Random-word")
 
     function handleClick(){
       if(score > highScore){
-        setHighScore(score)
-        
+        setHighScore(score)        
       }
         input.placeholder = "type the word above..."
         setButtonText("reset")
@@ -18,6 +18,7 @@ function Button({ buttonText, setButtonText, getWord, score, setScore, highScore
         input.focus()
         input.value = ''
         timer.classList.remove('invisible')
+        currentWord.classList.remove('Random-word--incorrect');
     }
 
   return (
