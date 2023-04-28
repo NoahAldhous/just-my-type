@@ -8,12 +8,11 @@ function Input({ handleChange, setSeconds, getWord, initialRender, score, setSco
       if(score > highScore){
         setHighScore(score)
       }
-    setScore(0);
-    getWord();
-    input.placeholder = "type the word above...";
-    setSeconds(-1)
-  }
-  console.log(initialRender)
+      setScore(0);
+      getWord();
+      input.placeholder = "type the word above...";
+      setSeconds(-1)
+    }
   }
 
   return (
