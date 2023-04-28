@@ -3,26 +3,42 @@ import "./App.css";
 
 import Input from "../Input/Input.js";
 import Button from "../Button/Button.js";
-import Header from "../Header/Header.js";
+import RandomWord from "../RandomWord/RandomWord.js";
 import Timer from "../CountdownTimer/CountdownTimer";
 
 function App() {
-  //set default states
+
+  //SETTING INITIAL STATES
+
+  //'word' is initially set as the name of the app (for aesthetic purposes) before being set as the random word fetched from Word API 
   const [word, setWord] = useState("just my type");
+
+  //'score' is the user's score
   const [score, setScore] = useState(0);
-  const [highScore, setHighScore] = useState(localStorage.localScore)
+
+  //'highScore' is the user's high score. It is stored in and then taken from local storage to maintain between sessions.
+  const [highScore, setHighScore] = useState(localStorage.localScore);
+
+  //'seconds' is used by the CountdownTimer Component
   const [seconds, setSeconds] =  useState(59);
-  const [buttonText, setButtonText] = useState("click to begin")
-  const [initialRender, setInitialRender] = useState(true)
+
+  //'buttonText' will display on the button, either as 'click to begin' or 'click to reset'
+  const [buttonText, setButtonText] = useState("click to begin");
+
+  //TODO:find out what this does???
+  const [initialRender, setInitialRender] = useState(true);
   
+  //Each time the high score of the user is updated, it is also saved to local storage
+  //In the case of a first time user, local storage will be set to 0 to avoid type errors.
   useEffect( ()=>{
-    localStorage.setItem('localScore', highScore)
+    localStorage.setItem('localScore', highScore);
     if(localStorage.localScore === 'undefined'){
       setHighScore(0)
     }
-  }, [highScore])
+  }, [highScore]);
 
   //fetch request for random word API
+  //TODO: refactor so multiple words are fetched initially (100?), then stored in an array that is cycled through- rather than fetching a new word each time
   async function getWord() {
     const response = await fetch(`https://random-word-api.herokuapp.com/word`);
     const data = await response.json();
@@ -33,7 +49,7 @@ function App() {
   //function that is called whenever input field value changes (i.e as user types)
   function handleChange(e) {
 
-    var header = document.querySelector(".Header")
+    var currentWord = document.querySelector(".RandomWord")
     var timer = document.querySelector(".the-countdown-component")
 
     if(initialRender){
@@ -43,16 +59,14 @@ function App() {
       setInitialRender(false)
     }
 
-
-    //If user types a string that is not included in the word, turns the word red
-    //to tell user they have made a mistake
+    //If what is typed in the input field does not match the random word, turns the random word red to indicate a typo.
     if (word.includes(e.target.value.toLowerCase()) === false) {
-      header.classList.add("Header--incorrect");
+      currentWord.classList.add("Random-word--incorrect");
     }
     
-    //if user corrects this mistake, turns the word black to show they are back on track.
+    //if user corrects this typo, turns the word black to indicate correct spelling.
     if (word.includes(e.target.value.toLowerCase())) {
-      header.classList.remove("Header--incorrect")
+      currentWord.classList.remove("Random-word--incorrect")
     }
     
     //checks if input field matches the word
@@ -63,7 +77,7 @@ function App() {
       e.target.value = "";
       //increase wordCounter by one
       setScore(score + 1);
-      header.classList.remove("Header--correct")
+      currentWord.classList.remove("Random-word--incorrect")
     }
   }
 
@@ -72,7 +86,7 @@ function App() {
           <div className= "Container">
 
             <div className= "Word-Container">
-              <Header word={word} />
+              <RandomWord word={word} />
             </div>
 
             <Input handleChange={handleChange} setSeconds = {setSeconds}  getWord= {getWord} initialRender = {initialRender} score = {score} setScore = {setScore} highScore={highScore} setHighScore = {setHighScore}/>

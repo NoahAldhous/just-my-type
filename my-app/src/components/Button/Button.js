@@ -1,6 +1,6 @@
 import "./Button.css";
 
-function Button({ buttonText, setButtonText, getWord, score, setScore, highScore, setHighScore, setSeconds, setPaused}) {
+function Button({ buttonText, setButtonText, getWord, score, setScore, highScore, setHighScore, setSeconds}) {
 
   var input = document.querySelector(".Input-field")
   var timer = document.querySelector(".the-countdown-component")
