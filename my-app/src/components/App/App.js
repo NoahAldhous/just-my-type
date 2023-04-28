@@ -77,7 +77,6 @@ function App() {
       e.target.value = "";
       //increment user's score by one
       setScore(score + 1);
-      currentWord.classList.remove("Random-word--incorrect");
     }
   }
 
